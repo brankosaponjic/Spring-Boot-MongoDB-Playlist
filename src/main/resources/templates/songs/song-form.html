@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+          crossorigin="anonymous">
+
+    <title>Song Form</title>
+</head>
+<body>
+    <div class="container">
+
+        <h3 class="mt-2">Song Form</h3>
+        <hr>
+
+        <p class="h4 mb-4">Add Song</p>
+
+        <form action="#" th:action="@{/playlist/save}" th:object="${song}" method="POST">
+
+            <div th:if="${#fields.hasErrors('*')}"  class="alert alert-danger">
+                There are errors
+            </div>
+
+            <!-- Add hidden form field to handle update -->
+            <input type="hidden" th:field="*{id}">
+
+            <input type="hidden" th:field="*{orderNo}">
+
+            <div class="form-group">
+                <input type="text" th:field="*{title}" class="form-control mb-4 col-4" placeholder="Title">
+                <span class="error" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+            </div>
+
+            <input type="time" th:field="*{length}"
+                   class="form-control mb-4 col-4" placeholder="Length">
+
+            <input type="text" th:field="*{author}"
+                   class="form-control mb-4 col-4" placeholder="Author">
+
+            <div class="form-group">
+                <input type="text" th:field="*{link}" class="form-control mb-4 col-4" placeholder="Link">
+                <span class="error" th:if="${#fields.hasErrors('link')}" th:errors="*{link}"></span>
+            </div>
+
+            <button type="submit" class="btn btn-info col-2">Save</button>
+
+        </form>
+
+        <hr>
+        <a th:href="@{/playlist/songs}">Back to Song List</a>
+
+    </div>
+</body>
+</html>

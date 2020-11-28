@@ -14,14 +14,14 @@ public class Song {
     private String id;
     private int orderNo;
     @NotEmpty(message = "You must enter the title!")
-    @Size(message = "Title must be at least 2 characters long")
+    @Size(message = "Title must be at least 2 characters long.")
     private String title;
     @Nullable
     private String length;
     @Nullable
     private String author;
     @NotEmpty(message = "You must enter the link!")
-    @URL(message = "URL must be valid")
+    @URL(message = "URL must be valid.")
     private String link;
     private static int counter = 0;
 
